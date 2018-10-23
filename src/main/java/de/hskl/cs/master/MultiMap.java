@@ -4,11 +4,11 @@ import java.util.*;
 
 public class MultiMap<K, V> {
 
-    //private MultiBagEntry multiBagEntry;
-    private Set<MultiBagEntry<? extends K, ? extends V>> _container;
+    private static MultiBagEntry multiBagEntry;
+    private Map<K, Collection<V>> _container;
 
     public MultiMap() {
-        this._container = new HashSet<>();
+        this._container = new HashMap<>();
     }
 
     public void clear() {
@@ -16,7 +16,7 @@ public class MultiMap<K, V> {
     }
 
     public boolean containsKey(K key) {
-        return true;
+        return this._container.containsKey(key);
     }
 
     public boolean containsValue(V value) {
@@ -24,11 +24,11 @@ public class MultiMap<K, V> {
     }
 
     public Set<MultiBagEntry<? extends K, ? extends V>> entrySet() {
-        return this._container;
+        return null;
     }
 
     public Collection<V> get(K key) {
-        return null;
+        return this._container.get(key);
     }
 
     public boolean isEmpty() {
@@ -40,14 +40,13 @@ public class MultiMap<K, V> {
     }
 
     public boolean put(K key, V value) {
-        MultiBagEntry<K, V> entry = new MultiBagEntry<>();
         return true;
     }
 
     public void putAll(MultiMap<K, V> multiMap) { }
 
     public boolean remove(K key) {
-        return true;
+        return this._container.remove(key) != null;
     }
 
     public int size() {
